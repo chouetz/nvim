@@ -20,7 +20,15 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      picker = {},
+      picker = {
+        grep = {
+          rg = {
+            "--hidden", -- Include hidden files (dotfiles)
+            "--no-ignore", -- Don't use .gitignore
+            "--glob=!.git/*", -- Exclude .git directory
+          },
+        },
+      },
       explorer = {},
       -- dashboard = {
       --   preset = {

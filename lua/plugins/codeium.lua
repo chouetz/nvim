@@ -2,15 +2,13 @@ return {
   "monkoose/neocodeium",
   event = "VeryLazy",
   config = function()
-    local neocodeium = require("neocodeium")
+    local neocodeium = require "neocodeium"
     neocodeium.setup()
-    
-    -- Set up keybindings
-    vim.keymap.set("i", "<A-f>", neocodeium.accept)
-    vim.keymap.set("i", "<A-w>", neocodeium.accept_word)
-    vim.keymap.set("i", "<A-a>", neocodeium.accept_line)
-    vim.keymap.set("i", "<A-e>", neocodeium.cycle_or_complete)
-    vim.keymap.set("i", "<A-r>", neocodeium.cycle_or_complete_reverse)
-    vim.keymap.set("i", "<A-c>", neocodeium.clear)
+    vim.keymap.set("i", "<C-Space>", function() require("neocodeium").accept() end)
+    vim.keymap.set("i", "<C-w>", function() require("neocodeium").accept_word() end)
+    vim.keymap.set("i", "<C-l>", function() require("neocodeium").accept_line() end)
+    vim.keymap.set("i", "<C-e>", function() require("neocodeium").cycle_or_complete() end)
+    vim.keymap.set("i", "<C-r>", function() require("neocodeium").cycle_or_complete(-1) end)
+    vim.keymap.set("i", "<C-c>", function() require("neocodeium").clear() end)
   end,
 }
